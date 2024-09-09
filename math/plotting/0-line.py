@@ -8,5 +8,5 @@ y = np.arange(0, 11) ** 3
 
 # linestyle='-' with colour specified or 'r-' is to make a solid red line
 plt.plot(y, 'r-')
-plt.xlim(0, 10) # Set x-axis range from 0 to 10
+plt.xlim(0, 10)  # Set x-axis range from 0 to 10
 plt.show()
