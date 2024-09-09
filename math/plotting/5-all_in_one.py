@@ -27,8 +27,8 @@ np.random.seed(5)
 student_grades = np.random.normal(68, 15, 50)
 
 # define main figure and create the 3x2 grid layout for subplots
-fig = plt.figure( figsize=(10, 8) )
-grid = plt.GridSpec(3, 2, figure=fig )
+fig = plt.figure(figsize=(10, 8))
+grid = plt.GridSpec(3, 2, figure=fig)
 
 # First subplot
 ax1 = fig.add_subplot(grid[0, 0])
@@ -75,12 +75,16 @@ ax5.set_ylabel("Number of Students")
 ax5.set_title("Project A")
 ax5.set_ylim(0, 30)
 ax5.set_xlim(0, 100)
-ax5.set_xticks(np.arange(0, 101, 10)) # specify positions of the x-axis ticks in the subplot
+# specify positions of the x-axis ticks in the subplot
+ax5.set_xticks(np.arange(0, 101, 10))
 
 # Adjust plots layout to prevent overlap and ensure all plot elements fit within the figure boundaries
 # 0, 0 is lower left corner; 1, 0.95 is upper right corner
-# rect specifies that the subplots should occupy the entire width of the figure (from 0 to 1) and 95% of the height (from 0 to 0.95) which reduces the top margin of the figure, preventing the title from overlapping with the subplots
-plt.tight_layout(rect=[0, 0, 1, 0.95]) 
+# rect specifies that the subplots should occupy the entire width of the
+# figure (from 0 to 1) and 95% of the height (from 0 to 0.95) which
+# reduces the top margin of the figure, preventing the title from
+# overlapping with the subplots
+plt.tight_layout(rect=[0, 0, 1, 0.95])
 plt.suptitle("All in One")
 
 # Adjust font size for axes labels and titles
