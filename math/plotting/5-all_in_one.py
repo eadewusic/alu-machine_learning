@@ -26,52 +26,67 @@ y32 = np.exp((r3 / t32) * x3)
 np.random.seed(5)
 student_grades = np.random.normal(68, 15, 50)
 
-# Creating the 3x2 grid layout for subplots
-fig, axs = plt.subplots(3, 2, figsize=(10, 8))
-fig.suptitle('All in One')
+# define main figure and create the 3x2 grid layout for subplots
+fig = plt.figure( figsize=(10, 8) )
+grid = plt.GridSpec(3, 2, figure=fig )
 
 # First subplot
-axs[0, 0].plot(np.arange(0, 11), y0, 'r')
+ax1 = fig.add_subplot(grid[0, 0])
+ax2 = fig.add_subplot(grid[0, 1])
+ax3 = fig.add_subplot(grid[1, 0])
+ax4 = fig.add_subplot(grid[1, 1])
+ax5 = fig.add_subplot(grid[2, :])
+
+ax1.set_xlim(0, 10)
+ax1.set_yticks(range(0, 1001, 500))
+ax1.set_ylim(0, 1000)
+ax1.plot(y0, 'r')
 
 # Second subplot
-axs[0, 1].scatter(x1, y1, c='magenta')
-axs[0, 1].set_title("Men's Height vs Weight", fontsize='x-small')
-axs[0, 1].set_xlabel('Height (in)', fontsize='x-small')
-axs[0, 1].set_ylabel('Weight (lbs)', fontsize='x-small')
+ax2.scatter(x1, y1, c='magenta')
+ax2.set_ylabel('Weight (lbs)')
+ax2.set_xlabel('Height (in)')
+ax2.set_xticks([60, 70, 80])
+ax2.set_title('Men\'s Height vs Weight')
 
 # Third subplot
-axs[1, 0].plot(x2, y2)
-axs[1, 0].set_yscale('log')
-axs[1, 0].set_title('Exponential Decay of C-14', fontsize='x-small')
-axs[1, 0].set_xlabel('Time (years)', fontsize='x-small')
-axs[1, 0].set_ylabel('Fraction Remaining', fontsize='x-small')
+ax3.plot(x2, y2)
+ax3.set_xlabel('Time (years)')
+ax3.set_ylabel('Fraction remaining')
+ax3.set_title('Exponential Decay of C-14')
+ax3.set_yscale('log')
+ax3.set_xlim(0, 28650)
 
 # Fourth subplot
-axs[1, 1].plot(x3, y31, 'r--', label='C-14')
-axs[1, 1].plot(x3, y32, 'g-', label='Ra-226')
-axs[1, 1].set_title('Exponential Decay of Radioactive Elements', fontsize='x-small')
-axs[1, 1].set_xlabel('Time (years)', fontsize='x-small')
-axs[1, 1].set_ylabel('Fraction Remaining', fontsize='x-small')
-axs[1, 1].legend(loc='upper right', fontsize='x-small')
+ax4.plot(x3, y31, 'r--', label="C-14")
+ax4.plot(x3, y32, 'g', label="Ra-226")
+ax4.set_xlabel('Time (years)')
+ax4.set_ylabel('Fraction Remaining')
+ax4.set_title('Exponential Decay of Radioactive Elements')
+ax4.set_xlim(0, 20000)
+ax4.set_xticks(range(0, 20001, 5000))
+ax4.set_ylim(0, 1)
+ax4.legend()
 
-# Fifth subplot (on left column)
-# axs[2, 0].hist(student_grades, bins=10, edgecolor='black')
-# axs[2, 0].set_title('Project A', fontsize='x-small')
-# axs[2, 0].set_xlabel('Grades', fontsize='x-small')
-# axs[2, 0].set_ylabel('Number of Students', fontsize='x-small')
-# axs[2, 1].remove() Remove the second subplot in the last row
+# Fifth subplot
+ax5.hist(student_grades, bins=range(0, 101, 10), edgecolor='black')
+ax5.set_xlabel("Grades")
+ax5.set_ylabel("Number of Students")
+ax5.set_title("Project A")
+ax5.set_ylim(0, 30)
+ax5.set_xlim(0, 100)
+ax5.set_xticks(np.arange(0, 101, 10))
 
-# Fifth subplot spanning two columns and centralised
+# Adjust plots layout to prevent overlap and ensure all plot elements fit within the figure boundaries
+# 0, 0 is lower left corner; 1, 0.95 is upper right corner
+# rect specifies that the subplots should occupy the entire width of the figure (from 0 to 1) and 95% of the height (from 0 to 0.95) which reduces the top margin of the figure, preventing the title from overlapping with the subplots
+plt.tight_layout(rect=[0, 0, 1, 0.95]) 
+plt.suptitle("All in One")
 
-# the subplot ax5 span both columns in the last row by specifying it as (5, 6), this spanning automatically centers it horizontally
-ax5 = fig.add_subplot(3, 2, (5, 6)) 
-ax5.hist(student_grades, bins=10, edgecolor='black')
-ax5.set_title('Project A', fontsize='x-small')
-ax5.set_xlabel('Grades', fontsize='x-small')
-ax5.set_ylabel('Number of Students', fontsize='x-small')
-
-# Adjust layout to prevent overlap
-plt.tight_layout() #ensure plots do not overlap 
-plt.subplots_adjust(top=0.9) # makes sure title fits well
+# Adjust font size for axes labels and titles
+for ax in fig.get_axes():
+    ax.xaxis.label.set_size('x-small')
+    ax.yaxis.label.set_size('x-small')
+    ax.title.set_size('x-small')
 
 plt.show()
