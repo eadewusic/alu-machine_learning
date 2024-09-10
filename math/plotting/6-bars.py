@@ -10,7 +10,7 @@ np.random.seed(5)
 fruit = np.random.randint(0, 20, (4, 3))
 
 labels = ['Farrah', 'Fred', 'Felicia']
-colors = ['red', 'yellow', 'orange', 'peach']
+colors = ['red', 'yellow', 'orange', '#ffe5b4']  # Using hex code for peach
 
 plt.figure(figsize=(8, 6))  # creates a figure with a specified size
 
@@ -39,12 +39,11 @@ plt.bar(
     fruit[3],
     color=colors[3],
     width=0.5,
-    label=colors[3],
+    label='peaches',
     bottom=fruit[0] +
     fruit[1] +
     fruit[2])
 
-plt.xlabel('Person')
 plt.ylabel('Quantity of Fruit')
 plt.title('Number of Fruit per Person')
 plt.ylim(0, 80)
