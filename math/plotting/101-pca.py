@@ -21,10 +21,12 @@ ax = fig.add_subplot(111, projection='3d')
 
 # Plot the data points colored by their species
 colors = plt.cm.plasma(labels)  # Use plasma colormap
-scatter = ax.scatter(pca_data[:, 0], pca_data[:, 1], pca_data[:, 2], c=colors, s=50)
+scatter = ax.scatter(pca_data[:, 0], pca_data[:, 1],
+                     pca_data[:, 2], c=colors, s=50)
 
 # Create a dummy ScalarMappable object
-norm = plt.Normalize(vmin=min(labels), vmax=max(labels))  # Assuming labels range from 0-2
+norm = plt.Normalize(vmin=min(labels), vmax=max(labels)
+                     )  # Assuming labels range from 0-2
 sm = plt.cm.ScalarMappable(cmap=plt.cm.plasma, norm=norm)
 sm.set_array([])  # Set an empty array
 
