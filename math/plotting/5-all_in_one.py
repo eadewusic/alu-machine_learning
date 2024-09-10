@@ -75,6 +75,7 @@ ax5.set_ylabel("Number of Students")
 ax5.set_title("Project A")
 ax5.set_ylim(0, 30)
 ax5.set_xlim(0, 100)
+
 # specify positions of the x-axis ticks in the subplot
 ax5.set_xticks(np.arange(0, 101, 10))
 
