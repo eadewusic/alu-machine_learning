@@ -1,43 +1,44 @@
+# Import necessary libraries
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Load the Iris flower data from pca.npz
-# lib = np.load("./data/pca.npz")
+# Load the Iris flower data from pca.npz file (assuming the file is in ./data/)
 data = np.load('./data/pca.npz/data.npy')
 labels = np.load('./data/pca.npz/labels.npy')
 
-# Center the data
+# Center the data by subtracting the mean of each feature
 data_means = np.mean(data, axis=0)
 norm_data = data - data_means
 
-# Perform PCA to reduce dimensionality to 3
+# Perform PCA (Principal Component Analysis) to reduce dimensionality to 3
+# This involves Singular Value Decomposition (SVD)
 _, _, Vh = np.linalg.svd(norm_data)
+# Project data onto first 3 principal components
 pca_data = np.matmul(norm_data, Vh[:3].T)
 
-# Create the 3D scatter plot
-fig = plt.figure(figsize=(10, 6))
-ax = fig.add_subplot(111, projection='3d')
+# Create a 3D scatter plot figure
+fig = plt.figure()
+ax = fig.add_subplot(1, 1, 1, projection='3d')  # Create a 3D subplot
 
-# Plot the data points colored by their species
-colors = plt.cm.plasma(labels)  # Use plasma colormap
-scatter = ax.scatter(pca_data[:, 0], pca_data[:, 1],
-                     pca_data[:, 2], c=colors, s=50)
+# Scatter plot the data points colored by their species labels (using
+# 'plasma' colormap)
+ax.scatter(
+    pca_data[:, 0],  # x-axis: values from first principal component
+    pca_data[:, 1],  # y-axis: values from second principal component
+    pca_data[:, 2],  # z-axis: values from third principal component
+    c=labels,        # Color based on species labels
+    label=labels,     # Add labels for each data point (optional)
+    cmap=plt.get_cmap('plasma'),  # Use 'plasma' colormap for color gradient
+)
 
-# Create a dummy ScalarMappable object
-norm = plt.Normalize(vmin=min(labels), vmax=max(labels)
-                     )  # Assuming labels range from 0-2
-sm = plt.cm.ScalarMappable(cmap=plt.cm.plasma, norm=norm)
-sm.set_array([])  # Set an empty array
-
-# Set labels and title
+# Set labels for the axes
 ax.set_xlabel('U1')
 ax.set_ylabel('U2')
-ax.set_zlabel('U3')
-ax.set_title('PCA of Iris Dataset')
+ax.set_zlabel('U3')  # U1, U2, and U3 are the first three principal components
 
-# Add a colorbar with the dummy mappable
-plt.colorbar(sm, label='Species')
+# Set the title of the plot
+plt.title("PCA of Iris Dataset")
 
 # Show the plot
 plt.show()
