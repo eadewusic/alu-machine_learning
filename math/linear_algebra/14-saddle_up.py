@@ -5,6 +5,7 @@ Module for performing matrix multiplication using numpy
 
 import numpy as np
 
+
 def np_matmul(mat1, mat2):
     """
     Performs matrix multiplication of two numpy arrays
