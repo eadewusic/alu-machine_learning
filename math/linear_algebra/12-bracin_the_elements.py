@@ -13,7 +13,8 @@ def np_elementwise(mat1, mat2):
         mat2 (numpy.ndarray or scalar): The second input numpy array or scalar
 
     Returns:
-        tuple: A tuple containing the element-wise sum, difference, product, and quotient
+        tuple: A tuple containing the element-wise sum,
+        difference, product, and quotient
     """
     add = mat1 + mat2
     sub = mat1 - mat2
