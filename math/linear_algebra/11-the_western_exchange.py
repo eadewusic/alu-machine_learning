@@ -12,7 +12,7 @@ def np_transpose(matrix):
         matrix (list of list): The input 2D list matrix
 
     Returns:
-        list of list: The transposed matrix.
+        list of list: The transposed matrix
     """
-    # Transpose using list comprehension and zip
-    return [list(row) for row in zip(*matrix)]
+    # Use zip to transpose and list comprehension to convert tuples to lists
+    return list(map(list, zip(*matrix)))
