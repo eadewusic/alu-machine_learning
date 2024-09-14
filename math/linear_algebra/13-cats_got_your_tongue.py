@@ -13,7 +13,8 @@ def np_cat(mat1, mat2, axis=0):
     Args:
         mat1 (numpy.ndarray): The first input numpy array
         mat2 (numpy.ndarray): The second input numpy array
-        axis (int): The axis along which the arrays will be concatenated (default is 0)
+        axis (int): The axis along which the arrays
+        will be concatenated (default is 0)
 
     Returns:
         numpy.ndarray: A new numpy array that is the result of
