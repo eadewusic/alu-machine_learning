@@ -11,12 +11,11 @@ def matrix_shape(matrix):
         A list of integers representing the shape of the matrix.
     """
 
-    # Get the shape of the first row (assuming all elements have the same
-    # shape)
-    shape = list(len(row) for row in matrix[:1])
+    # Check if it's a 1D list
+    if not isinstance(matrix, list):
+        return [1]  # Handle single element (not a list)
 
-    # Check if the matrix is a single row (1D)
-    if len(matrix) == 1:
-        shape = [shape[0]]  # Convert to a single-element list for consistency
+    # Get the shape of the first row for 2D or higher dimensional lists
+    shape = list(len(row) for row in matrix[:1])
 
     return shape
