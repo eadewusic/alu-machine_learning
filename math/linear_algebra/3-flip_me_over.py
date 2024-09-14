@@ -13,7 +13,7 @@ def matrix_transpose(matrix):
     Calculate the transpose of a 2D matrix.
 
     Args:
-        matrix (list of lists): 
+        matrix (list of lists):
         A 2D list representing the matrix to be transposed.
 
     Returns:
