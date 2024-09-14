@@ -1,18 +1,16 @@
 #!/usr/bin/env python3
 """
-Module for transposing a matrix
+Module for transposing a numpy.ndarray.
 """
-
 
 def np_transpose(matrix):
     """
-    Transposes a 2D list matrix
+    Transposes a numpy.ndarray.
 
     Args:
-        matrix (list of list): The input 2D list matrix
+        matrix (numpy.ndarray): The input numpy array.
 
     Returns:
-        list of list: The transposed matrix
+        numpy.ndarray: The transposed numpy array.
     """
-    # Use zip to transpose and list comprehension to convert tuples to lists
-    return list(map(list, zip(*matrix)))
+    return matrix.T
