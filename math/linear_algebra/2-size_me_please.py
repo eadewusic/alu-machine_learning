@@ -7,7 +7,6 @@ This module contains the matrix_shape function which computes
 the shape of a matrix as a list of integers.
 """
 
-
 def matrix_shape(matrix):
     """
     Calculate the shape of a matrix.
