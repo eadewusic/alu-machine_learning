@@ -3,12 +3,12 @@
 
 def np_shape(matrix):
     """
-    Calculates the shape of a numpy.ndarray.
+    Calculates the shape of a numpy.ndarray
 
     Args:
-        matrix (np.ndarray): The input numpy array.
+        matrix (np.ndarray): The input numpy array
 
     Returns:
-        tuple: The shape of the numpy array as a tuple of integers.
+        tuple: The shape of the numpy array as a tuple of integers
     """
     return matrix.shape
