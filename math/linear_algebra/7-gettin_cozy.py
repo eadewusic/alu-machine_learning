@@ -16,11 +16,13 @@ def cat_matrices2D(mat1, mat2, axis=0):
     Args:
         mat1 (list of list): The first matrix to concatenate.
         mat2 (list of list): The second matrix to concatenate.
-        axis (int): The axis along which to concatenate (0 for rows, 1 for columns)
+        axis (int): The axis along which to concatenate
+        (0 for rows, 1 for columns)
 
     Returns:
-        list of list: A new matrix resulting from the concatenation of mat1 and mat2
-                      Returns None if the matrices cannot be concatenated
+        list of list: A new matrix resulting from the concatenation
+                      of mat1 and mat2 - Returns None if the matrices
+                      cannot be concatenated
     """
     if axis == 0:
         if len(mat1[0]) != len(mat2[0]):
