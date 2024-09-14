@@ -3,6 +3,8 @@
 Module for concatenating two numpy arrays along a specific axis
 """
 
+import numpy as np
+
 
 def np_cat(mat1, mat2, axis=0):
     """
