@@ -12,27 +12,27 @@ import numpy as np
 
 def definiteness(matrix):
     """
-    Determines the definiteness of a symmetric matrix.
+    Determines the definiteness of a symmetric matrix
 
     Args:
-        matrix (numpy.ndarray): The input square matrix to evaluate.
+        matrix (numpy.ndarray): The input square matrix to evaluate
 
     Returns:
         str: A string indicating the type of definiteness ("Positive definite",
              "Positive semi-definite", "Negative definite",
-             "Negative semi-definite", "Indefinite") or None 
-             if the matrix is not valid or not symmetric.
+             "Negative semi-definite", "Indefinite") or None
+             if the matrix is not valid or not symmetric
 
     Raises:
-        TypeError: If the input is not a numpy.ndarray.
+        TypeError: If the input is not a numpy.ndarray
     """
     if not isinstance(matrix, np.ndarray):
         raise TypeError("matrix must be a numpy.ndarray")
 
-    if (matrix.ndim != 2 or 
-        matrix.shape[0] != matrix.shape[1] or 
+    if (matrix.ndim != 2 or
+        matrix.shape[0] != matrix.shape[1] or
         matrix.size == 0):
-        return None
+         return None
 
     # Check if the matrix is symmetric
     if not np.array_equal(matrix, matrix.T):
