@@ -19,8 +19,9 @@ def definiteness(matrix):
 
     Returns:
         str: A string indicating the type of definiteness ("Positive definite",
-             "Positive semi-definite", "Negative definite", "Negative semi-definite",
-             "Indefinite") or None if the matrix is not valid or not symmetric.
+             "Positive semi-definite", "Negative definite",
+             "Negative semi-definite", "Indefinite") or None 
+             if the matrix is not valid or not symmetric.
 
     Raises:
         TypeError: If the input is not a numpy.ndarray.
@@ -28,7 +29,9 @@ def definiteness(matrix):
     if not isinstance(matrix, np.ndarray):
         raise TypeError("matrix must be a numpy.ndarray")
 
-    if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1] or matrix.size == 0:
+    if (matrix.ndim != 2 or 
+        matrix.shape[0] != matrix.shape[1] or 
+        matrix.size == 0):
         return None
 
     # Check if the matrix is symmetric
