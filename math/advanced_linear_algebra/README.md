@@ -45,4 +45,4 @@ By the end of this project, you should be able to:
    chmod +x filename.py
    ```
 
-**Note: Refer to Linear Algebra Repo for making files executable on Windows**
+**Note: Refer to Linear Algebra directory in this Repo for making files executable on Windows**
