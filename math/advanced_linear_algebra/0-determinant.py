@@ -4,6 +4,7 @@
 Module for calculating the determinant of a matrix.
 """
 
+
 def determinant(matrix):
     """
     Calculates the determinant of a matrix.
