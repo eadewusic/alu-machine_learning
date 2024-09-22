@@ -30,9 +30,9 @@ def definiteness(matrix):
         raise TypeError("matrix must be a numpy.ndarray")
 
     if (matrix.ndim != 2 or
-        matrix.shape[0] != matrix.shape[1] or
-        matrix.size == 0):
-         return None
+            matrix.shape[0] != matrix.shape[1] or
+            matrix.size == 0):
+        return None
 
     # Check if the matrix is symmetric
     if not np.array_equal(matrix, matrix.T):
