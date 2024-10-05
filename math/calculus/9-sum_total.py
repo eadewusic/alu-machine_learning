@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Module for calculating the sum of squares of the first n integers.
+"""
 
 def summation_i_squared(n):
     """Calculates the sum of squares of the first n integers."""
