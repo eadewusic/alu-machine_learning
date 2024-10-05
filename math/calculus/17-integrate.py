@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Module for calculating the integral of a polynomial.
+Module for calculating the integral of a polynomial
 """
 
 
@@ -15,15 +15,27 @@ def poly_integral(poly, C=0):
     Returns:
         list: List of coefficients representing the integral of the polynomial, or None if invalid.
     """
+    # Input validation
     if not isinstance(
-        poly, list) or not all(
-        isinstance(
-            c, (int, float)) for c in poly) or not isinstance(
-                C, (int, float)):
+            poly, list) or not isinstance(
+            C, (int, float)) or not poly:
+        return None
+    if not all(isinstance(c, (int, float)) for c in poly):
         return None
 
-    integral = [C]  # Start with the integration constant
+    integrals = [C]  # Initialize the integral list with constant C
     for power, coefficient in enumerate(poly):
-        integral.append(coefficient / (power + 1))
-
-    return integral
+        if power == 0:
+            # The integral of a constant is the constant times x
+            integrals.append(coefficient)
+        else:
+            # Calculate the integral coefficient
+            integral = coefficient / (power + 1)
+            integrals.append(
+                # Store as int if it's whole
+                int(integral) if integral.is_integer() else integral
+            )
+    # Remove trailing zeros
+    while integrals[-1] == 0 and len(integrals) > 1:
+        integrals.pop()
+    return integrals
