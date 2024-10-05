@@ -6,14 +6,16 @@ Module for calculating the integral of a polynomial
 
 def poly_integral(poly, C=0):
     """
-    Calculates the integral of a polynomial represented as a list of coefficients.
+    Calculates the integral of a polynomial represented 
+    as a list of coefficients
 
     Args:
-        poly (list): List of coefficients representing the polynomial.
-        C (int, optional): Integration constant. Defaults to 0.
+        poly (list): List of coefficients representing the polynomial
+        C (int, optional): Integration constant. Defaults to 0
 
     Returns:
-        list: List of coefficients representing the integral of the polynomial, or None if invalid.
+        list: List of coefficients representing the integral
+        of the polynomial, or None if invalid
     """
     # Input validation
     if not isinstance(
