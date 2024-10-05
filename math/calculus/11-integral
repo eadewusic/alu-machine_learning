@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+"""
+Module for calculating the integral of a polynomial.
+"""
+
+def integral_of_x3():
+    """
+    Returns the integral of x^3
+    """
+    return "x^4/4 + C"
