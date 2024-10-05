@@ -6,7 +6,7 @@ Module for calculating the integral of a polynomial
 
 def poly_integral(poly, C=0):
     """
-    Calculates the integral of a polynomial represented 
+    Calculates the integral of a polynomial represented
     as a list of coefficients
 
     Args:
