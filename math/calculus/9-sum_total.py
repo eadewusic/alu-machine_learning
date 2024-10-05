@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 def summation_i_squared(n):
     """Calculates the sum of squares of the first n integers."""
     if not isinstance(n, int) or n < 1:
