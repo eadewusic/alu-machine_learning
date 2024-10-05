@@ -1,7 +1,5 @@
 # Calculus Project
 
-## Overview
-
 This project covers various topics in calculus, including summation and product notation, derivatives, integrals, and series. The primary goal is to understand and apply these fundamental concepts through multiple-choice questions and Python scripts.
 
 ## Learning Objectives
