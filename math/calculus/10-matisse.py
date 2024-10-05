@@ -5,19 +5,21 @@ Module for calculating the derivative of a polynomial.
 
 
 def poly_derivative(poly):
-    """Calculates the derivative of a polynomial."""
-    # Check if poly is a list and contains only integers or floats
-    if not isinstance(
-        poly, list) or any(
-        not isinstance(
-            coef, (int, float)) for coef in poly):
+    """
+    Computes the coefficients of the terms in the
+    derivative of a function using Sum rule
+    """
+    if not isinstance(poly, list) or not poly:
         return None
-
-    # Calculate derivative coefficients
-    derivative = [(i * coef) for i, coef in enumerate(poly) if i > 0]
-
-    # If the derivative list is empty, it means the polynomial was constant
-    if not derivative:
+    if not all(isinstance(c, (int, float)) for c in poly):
+        return None
+    if len(poly) == 1:
         return [0]
 
-    return derivative
+    derivatives = []
+    for power, coefficient in enumerate(poly):
+        if power == 0:
+            continue
+        derivatives.append(power * coefficient)
+
+    return derivatives
