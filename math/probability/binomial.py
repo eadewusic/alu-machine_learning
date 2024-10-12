@@ -71,3 +71,27 @@ class Binomial:
                 # Set the instance attributes for n and p
                 self.n = n  # Number of trials
                 self.p = p  # Probability of success
+
+    def pmf(self, k):
+        """
+        Calculates the PMF for a given number of successes.
+
+        Parameters:
+            k (int or float): The number of successes.
+
+        Returns:
+            float: The PMF value for k.
+        """
+        # Convert k to an integer if it's not
+        k = int(k)
+
+        # If k is out of range, return 0
+        if k < 0 or k > self.n:
+            return 0
+
+        # Calculate the PMF using the formula
+        from math import comb
+
+        pmf_value = (comb(self.n, k) * (self.p ** k)
+                     * ((1 - self.p) ** (self.n - k)))
+        return pmf_value
