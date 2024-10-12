@@ -59,7 +59,8 @@ class Normal:
     def calculate_stddev(self, data, mean):
         """Calculate the standard deviation of a list of numbers"""
         variance = sum((x - mean) ** 2 for x in data) / len(data)
-        return variance ** 0.5  # Standard deviation is the square root of variance
+        # Standard deviation is the square root of variance
+        return variance ** 0.5
 
     def z_score(self, x):
         """Calculates the z-score of a given x-value"""
