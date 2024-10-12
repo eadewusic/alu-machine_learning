@@ -31,46 +31,33 @@ class Binomial:
     """
 
     def __init__(self, data=None, n=1, p=0.5):
-        # Check if data is provided
         if data is None:
-            # If no data is provided, check the validity of n
             if n < 1:
                 raise ValueError("n must be a positive value")
             else:
-                self.n = n  # Set the number of trials n
+                self.n = n
 
-            # Check the validity of p
             if p <= 0 or p >= 1:
                 raise ValueError("p must be greater than 0 and less than 1")
             else:
-                self.p = p  # Set the probability of success p
+                self.p = p
         else:
-            # If data is provided, validate the data type
             if not isinstance(data, list):
                 raise TypeError("data must be a list")
             elif len(data) < 2:
                 raise ValueError("data must contain multiple values")
             else:
-                # Calculate the mean of the data
                 mean = float(sum(data) / len(data))
                 summation = 0
-
-                # Calculate the variance of the data
                 for x in data:
                     summation += ((x - mean) ** 2)
                 variance = (summation / len(data))
-
-                # Calculate q and derive p from variance and mean
                 q = variance / mean
-                p = (1 - q)  # Calculate probability of success
-
-                # Estimate the number of trials n and recalculate p
+                p = (1 - q)
                 n = round(mean / p)
                 p = float(mean / n)
-
-                # Set the instance attributes for n and p
-                self.n = n  # Number of trials
-                self.p = p  # Probability of success
+                self.n = n
+                self.p = p
 
     def comb(self, n, k):
         """
@@ -105,14 +92,33 @@ class Binomial:
         Returns:
             float: The PMF value for k.
         """
-        # Convert k to an integer if it's not
         k = int(k)
 
-        # If k is out of range, return 0
         if k < 0 or k > self.n:
             return 0
 
-        # Calculate the PMF using the formula
         pmf_value = (self.comb(self.n, k) * (self.p ** k)
                      * ((1 - self.p) ** (self.n - k)))
         return pmf_value
+
+    def cdf(self, k):
+        """
+        Calculates the CDF for a given number of successes.
+
+        Parameters:
+            k (int or float): The number of successes.
+
+        Returns:
+            float: The CDF value for k.
+        """
+        k = int(k)
+
+        # If k is out of range, return 0
+        if k < 0:
+            return 0
+        if k >= self.n:
+            return 1
+
+        # Calculate the CDF as the sum of PMF values
+        cdf_value = sum(self.pmf(i) for i in range(k + 1))
+        return cdf_value
