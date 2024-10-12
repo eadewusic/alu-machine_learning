@@ -3,12 +3,15 @@
 Exponential distribution class
 """
 
-
 class Exponential:
-    """Represents an Exponential distribution"""
+    """
+    Represents an Exponential distribution
+    """
 
     def __init__(self, data=None, lambtha=1.):
-        """Initializes the Exponential distribution"""
+        """
+        Initializes the Exponential distribution
+        """
         if data is None:
             if lambtha <= 0:
                 raise ValueError("lambtha must be a positive value")
@@ -26,6 +29,16 @@ class Exponential:
         """
         if x < 0:
             return 0
-
+        
         # Apply the PDF formula for Exponential distribution
         return self.lambtha * (2.7182818285 ** (-self.lambtha * x))
+
+    def cdf(self, x):
+        """
+        Calculates the value of the CDF for a given time period
+        """
+        if x < 0:
+            return 0
+
+        # Apply the CDF formula for Exponential distribution
+        return 1 - (2.7182818285 ** (-self.lambtha * x))
