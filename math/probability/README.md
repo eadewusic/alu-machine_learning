@@ -28,29 +28,6 @@ By the end of this project, I should be able to:
 - Approximate mathematical constants like π and e for computations.
 - Implement probability functions without importing external libraries.
 
-## Usage
-
-### Prerequisites
-
-- Python 3.5 or higher (The project is designed for Ubuntu 16.04 LTS)
-- Knowledge of basic Python syntax and probability theory.
-
-### How to Run
-
-1. Clone or download this repository.
-2. Navigate to the project directory:
-   ```bash
-   cd path/to/project_directory
-   ```
-3. Ensure the Python scripts are executable:
-   ```bash
-   chmod +x *.py
-   ```
-4. Execute each Python file as follows:
-   ```bash
-   ./task_X.py
-   ```
-
 ### Mathematical Approximations
 
 For mathematical approximations of irrational numbers and special functions, the following values are used:
@@ -60,41 +37,7 @@ For mathematical approximations of irrational numbers and special functions, the
 
 For the error function (erf) approximation, the following equation is implemented:
 
-\[
-\text{erf}(x) = \frac{2}{\sqrt{\pi}} \left( x - \frac{x^3}{3} + \frac{x^5}{10} - \frac{x^7}{42} + \frac{x^9}{216} \right)
-\]
-
-erf(x)= 
-π
-​
- 
-2
-​
- (x− 
-3
-x 
-3
- 
-​
- + 
-10
-x 
-5
- 
-​
- − 
-42
-x 
-7
- 
-​
- + 
-216
-x 
-9
- 
-​
- )
+erf(x)= 2/√π (x - x³/3 + x⁵/10 - x⁷/42 + x⁹/216)
 
 ### Example Task
 
