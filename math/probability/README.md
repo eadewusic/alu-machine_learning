@@ -37,7 +37,7 @@ For mathematical approximations of irrational numbers and special functions, the
 
 For the error function (erf) approximation, the following equation is implemented:
 
-erf(x)= 2/√π (x - x³/3 + x⁵/10 - x⁷/42 + x⁹/216)
+```erf(x)= 2/√π (x - x³/3 + x⁵/10 - x⁷/42 + x⁹/216)```
 
 ### Example Task
 
