@@ -69,3 +69,11 @@ class Normal:
     def x_value(self, z):
         """Calculates the x-value of a given z-score"""
         return self.mean + z * self.stddev
+
+    def pdf(self, x):
+        """Calculates the value of the PDF for a given x-value"""
+        if self.stddev <= 0:
+            raise ValueError("stddev must be a positive value")
+        exponent = -((x - self.mean) ** 2) / (2 * (self.stddev ** 2))
+        return (1 / (self.stddev * (2 * 3.141592653589793) ** 0.5)) * \
+            (2.7182818285 ** exponent)
