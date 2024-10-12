@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Exponential and Normal distribution classes
+Normal distribution class
 """
 
+import math
 
 class Exponential:
     """Represents an Exponential distribution"""
@@ -24,14 +25,13 @@ class Exponential:
         """Calculates the value of the PDF for a given time period"""
         if x < 0:
             return 0
-        return self.lambtha * (self.lambtha ** x) * \
-            (2.7182818285 ** (-self.lambtha * x))
+        return self.lambtha * (self.lambtha ** x) * (math.e ** (-self.lambtha * x))
 
     def cdf(self, x):
         """Calculates the value of the CDF for a given time period"""
         if x < 0:
             return 0
-        return 1 - (2.7182818285 ** (-self.lambtha * x))
+        return 1 - (math.e ** (-self.lambtha * x))
 
 
 class Normal:
@@ -75,5 +75,11 @@ class Normal:
         if self.stddev <= 0:
             raise ValueError("stddev must be a positive value")
         exponent = -((x - self.mean) ** 2) / (2 * (self.stddev ** 2))
-        return (1 / (self.stddev * (2 * 3.141592653589793) ** 0.5)) * \
-            (2.7182818285 ** exponent)
+        return (1 / (self.stddev * (2 * math.pi) ** 0.5)) * (math.e ** exponent)
+
+    def cdf(self, x):
+        """Calculates the value of the CDF for a given x-value"""
+        if self.stddev <= 0:
+            raise ValueError("stddev must be a positive value")
+        z = self.z_score(x)  # Calculate z-score
+        return 0.5 * (1 + math.erf(z / math.sqrt(2)))  # CDF using the error function
