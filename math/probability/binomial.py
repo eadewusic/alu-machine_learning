@@ -5,6 +5,31 @@ Binomial distribution class
 
 
 class Binomial:
+    """
+    Represents a Binomial distribution.
+
+    A Binomial distribution is a discrete probability distribution
+    of the number of successes in a sequence of n independent
+    experiments. Each experiment results in a success with
+    probability p.
+
+    Attributes:
+        n (int): Number of Bernoulli trials.
+        p (float): Probability of success on each trial.
+
+    Parameters:
+        data (list, optional): A list of data points to estimate
+                               the distribution parameters.
+        n (int, optional): Number of Bernoulli trials (default is 1).
+        p (float, optional): Probability of success (default is 0.5).
+
+    Raises:
+        ValueError: If n is not a positive value or if p is not in
+                     the range (0, 1).
+        TypeError: If data is not a list.
+        ValueError: If data contains fewer than two values.
+    """
+
     def __init__(self, data=None, n=1, p=0.5):
         # Check if data is provided
         if data is None:
