@@ -72,6 +72,29 @@ class Binomial:
                 self.n = n  # Number of trials
                 self.p = p  # Probability of success
 
+    def comb(self, n, k):
+        """
+        Calculates the binomial coefficient C(n, k).
+
+        Parameters:
+            n (int): Total number of trials.
+            k (int): Number of successes.
+
+        Returns:
+            int: The binomial coefficient C(n, k).
+        """
+        if k < 0 or k > n:
+            return 0
+        if k == 0 or k == n:
+            return 1
+
+        # Calculate C(n, k) using an iterative approach
+        k = min(k, n - k)  # Take advantage of symmetry
+        c = 1
+        for i in range(k):
+            c = c * (n - i) // (i + 1)
+        return c
+
     def pmf(self, k):
         """
         Calculates the PMF for a given number of successes.
@@ -90,8 +113,6 @@ class Binomial:
             return 0
 
         # Calculate the PMF using the formula
-        from math import comb
-
-        pmf_value = (comb(self.n, k) * (self.p ** k)
+        pmf_value = (self.comb(self.n, k) * (self.p ** k)
                      * ((1 - self.p) ** (self.n - k)))
         return pmf_value
