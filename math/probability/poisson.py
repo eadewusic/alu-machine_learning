@@ -22,7 +22,7 @@ class Poisson:
 
     def pmf(self, k):
         """
-        Calculates the value of the PMF 
+        Calculates the value of the PMF
         for a given number of occurrences (k)
         """
         if k < 0:
