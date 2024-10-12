@@ -3,8 +3,6 @@
 Normal distribution class
 """
 
-import numpy as np
-
 
 class Normal:
     """Represents a Normal distribution"""
@@ -21,6 +19,14 @@ class Normal:
                 raise TypeError("data must be a list")
             if len(data) < 2:
                 raise ValueError("data must contain multiple values")
-            self.mean = float(np.mean(data))
-            # Population standard deviation
-            self.stddev = float(np.std(data, ddof=0))
+            self.mean = self.calculate_mean(data)
+            self.stddev = self.calculate_stddev(data, self.mean)
+
+    def calculate_mean(self, data):
+        """Calculate the mean of a list of numbers"""
+        return sum(data) / len(data)
+
+    def calculate_stddev(self, data, mean):
+        """Calculate the standard deviation of a list of numbers"""
+        variance = sum((x - mean) ** 2 for x in data) / len(data)
+        return variance ** 0.5  # Standard deviation is the square root of variance
