@@ -5,10 +5,14 @@ Poisson distribution class
 
 
 class Poisson:
-    """Represents a Poisson distribution"""
+    """
+    Represents a Poisson distribution
+    """
 
     def __init__(self, data=None, lambtha=1.):
-        """Initializes the Poisson distribution"""
+        """
+        Initializes the Poisson distribution
+        """
         if data is None:
             if lambtha <= 0:
                 raise ValueError("lambtha must be a positive value")
@@ -43,3 +47,20 @@ class Poisson:
         e = 2.7182818285  # Euler's number
         lambtha = self.lambtha
         return (lambtha ** k) * (e ** (-lambtha)) / factorial(k)
+
+    def cdf(self, k):
+        """
+        Calculates the value of the CDF for a
+        given number of successes (k)
+        """
+        if k < 0:
+            return 0
+
+        k = int(k)  # Ensure k is an integer
+
+        # Sum the PMFs from 0 to k
+        cumulative_prob = 0
+        for i in range(k + 1):
+            cumulative_prob += self.pmf(i)
+
+        return cumulative_prob
