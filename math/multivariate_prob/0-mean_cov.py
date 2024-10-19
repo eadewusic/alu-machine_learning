@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-This module provides a function to calculate the mean and covariance of a dataset.
+This module provides a function to calculate
+the mean and covariance of a dataset
 """
 
 import numpy as np
@@ -8,19 +9,19 @@ import numpy as np
 
 def mean_cov(X):
     """
-    Calculates the mean and covariance of a dataset.
+    Calculates the mean and covariance of a dataset
 
     Parameters:
-    X (numpy.ndarray): A 2D array of shape (n, d) containing the dataset.
+    X (numpy.ndarray): A 2D array of shape (n, d) containing the dataset
 
     Returns:
     tuple: A tuple containing:
-        - mean (numpy.ndarray): The mean of the dataset of shape (1, d).
-        - cov (numpy.ndarray): The covariance matrix of shape (d, d).
+        - mean (numpy.ndarray): The mean of the dataset of shape (1, d)
+        - cov (numpy.ndarray): The covariance matrix of shape (d, d)
 
     Raises:
-    TypeError: If X is not a 2D numpy.ndarray.
-    ValueError: If X contains less than 2 data points.
+    TypeError: If X is not a 2D numpy.ndarray
+    ValueError: If X contains less than 2 data points
     """
     # Check if X is a 2D numpy.ndarray
     if not isinstance(X, np.ndarray) or X.ndim != 2:
