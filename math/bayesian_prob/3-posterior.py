@@ -16,8 +16,8 @@ def posterior(x, n, P, Pr):
     Parameters:
         x (int): Total number of patients that develop severe side effects
         n (int): Total number of patients observed
-        P (1D numpy.ndarray): Array containing various hypothetical probabilities
-        of developing severe side effects
+        P (1D numpy.ndarray): Array containing various hypothetical
+        probabilities of developing severe side effects
         Pr (1D numpy.ndarray): Array containing the prior beliefs of P
     Returns:
         numpy.ndarray: The posterior probability of each
