@@ -20,7 +20,8 @@ def intersection(x, n, P, Pr):
 
     Raises:
         ValueError: If n is not a positive integer, x is not >= 0, or x > n
-        TypeError: If P is not a 1D numpy.ndarray or Pr does not match the shape of P
+        TypeError: If P is not a 1D numpy.ndarray or Pr
+        does not match the shape of P
         ValueError: If any value in P or Pr is not in the range [0, 1]
         ValueError: If Pr does not sum to 1
 
