@@ -15,8 +15,7 @@ class MultiNormal:
         Initializes the MultiNormal instance
 
         Parameters:
-        data (numpy.ndarray): A 2D array of shape (d, n)
-        containing the dataset
+        data (numpy.ndarray): A 2D array of shape (d, n) containing the dataset
         
         Raises:
         TypeError: If data is not a 2D numpy.ndarray
@@ -62,7 +61,7 @@ class MultiNormal:
         # Check if x has the correct shape (d, 1)
         d = self.mean.shape[0]
         if x.shape != (d, 1):
-            raise ValueError(f"x must have the shape ({d}, 1)")
+            raise ValueError("x must have the shape ({}, 1)".format(d))
         
         # Calculate the determinant and inverse of the covariance matrix
         det_cov = np.linalg.det(self.cov)
