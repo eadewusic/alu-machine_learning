@@ -8,7 +8,8 @@ import numpy as np
 
 def likelihood(x, n, P):
     """
-    Calculates the likelihood of obtaining data given various hypothetical probabilities
+    Calculates the likelihood of obtaining data given
+    various hypothetical probabilities
 
     Args:
         x (int): The number of patients that develop severe side effects
@@ -21,7 +22,8 @@ def likelihood(x, n, P):
         ValueError: If any value in P is not in the range [0, 1]
 
     Returns:
-        numpy.ndarray: 1D array containing the likelihood of obtaining the data for each probability in P
+        numpy.ndarray: 1D array containing the likelihood
+        of obtaining the data for each probability in P
     """
 
     # Validate input parameters
