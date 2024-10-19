@@ -5,8 +5,7 @@ the posterior of obtaining data
 """
 
 import numpy as np
-from ..bayesian_prob import marginal  # Import the marginal function
-
+from bayesian_prob import marginal  # Import the marginal function
 
 def posterior(x, n, P, Pr):
     """
@@ -36,8 +35,7 @@ def posterior(x, n, P, Pr):
         raise ValueError("n must be a positive integer")
 
     if not isinstance(x, int) or x < 0:
-        raise ValueError(
-            "x must be an integer that is greater than or equal to 0")
+        raise ValueError("x must be an integer that is greater than or equal to 0")
 
     if x > n:
         raise ValueError("x cannot be greater than n")
