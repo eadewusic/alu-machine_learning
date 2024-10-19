@@ -44,7 +44,11 @@ def likelihood(x, n, P):
         raise ValueError("All values in P must be in the range [0, 1]")
 
     # Calculate the likelihood using the binomial distribution
+    factorial_n = np.math.factorial(n)
+    factorial_x = np.math.factorial(x)
+    factorial_n_x = np.math.factorial(n - x)
+
     likelihood_values = (P ** x) * ((1 - P) ** (n - x)) * \
-        (np.math.factorial(n) / (np.math.factorial(x) * np.math.factorial(n - x)))
+        (factorial_n / (factorial_x * factorial_n_x))
 
     return likelihood_values
