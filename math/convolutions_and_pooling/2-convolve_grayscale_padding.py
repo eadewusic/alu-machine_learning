@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-Defines a function that performs convolution with custom padding on grayscale images.
+Defines a function that performs convolution with
+custom padding on grayscale images
 """
 
 import numpy as np
@@ -8,7 +9,7 @@ import numpy as np
 
 def convolve_grayscale_padding(images, kernel, padding):
     """
-    Performs a convolution on grayscale images with custom padding.
+    Performs a convolution on grayscale images with custom padding
 
     Parameters:
         images (numpy.ndarray): Input images with shape (m, h, w)
@@ -23,7 +24,8 @@ def convolve_grayscale_padding(images, kernel, padding):
             - pw: padding for width
 
     Returns:
-        numpy.ndarray: Array of convolved images with dimensions adjusted by the padding.
+        numpy.ndarray: Array of convolved images with
+        dimensions adjusted by the padding
     """
     m, height, width = images.shape
     kh, kw = kernel.shape
