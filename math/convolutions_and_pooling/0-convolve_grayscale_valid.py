@@ -1,42 +1,40 @@
 #!/usr/bin/env python3
-import numpy as np
-
 """
 Module for performing valid convolution on grayscale images.
 """
 
-def convolve_grayscale_valid(images, kernel):
-    """Perform valid convolution on grayscale images.
+import numpy as np
 
-    Args:
-        images (np.ndarray): Input images of shape (m, h, w).
-        kernel (np.ndarray): Convolution kernel of shape (kh, kw).
+def convolve_grayscale_valid(images, kernel):
+    """
+    Performs a valid convolution on grayscale images.
+
+    Parameters:
+        images (numpy.ndarray): Input images with shape (m, h, w)
+            - m: number of images
+            - h: height in pixels of all images
+            - w: width in pixels of all images
+        kernel (numpy.ndarray): Convolution kernel with shape (kh, kw)
+            - kh: height of the kernel
+            - kw: width of the kernel
+
+    The function may only use two for loops maximum and no other loops are allowed.
 
     Returns:
-        np.ndarray: Convolved images.
+        numpy.ndarray: Array of convolved images.
     """
-    m, h, w = images.shape  # Get the shape of the input images
-    kh, kw = kernel.shape    # Get the shape of the kernel
+    # Extract dimensions
+    m, height, width = images.shape
+    kh, kw = kernel.shape
 
-    # Calculate the dimensions of the output images
-    output_h = h - kh + 1
-    output_w = w - kw + 1
+    # Initialize the output array with the correct dimensions
+    convoluted = np.zeros((m, height - kh + 1, width - kw + 1))
 
-    # Initialize the output array
-    convolved_images = np.zeros((m, output_h, output_w))
+    # Perform the convolution using two for loops
+    for h in range(height - kh + 1):
+        for w in range(width - kw + 1):
+            # Perform element-wise multiplication and summation over the current slice
+            output = np.sum(images[:, h: h + kh, w: w + kw] * kernel, axis=(1, 2))
+            convoluted[:, h, w] = output
 
-    # Perform the convolution
-    for i in range(m):  # Loop over each image
-        for y in range(output_h):  # Loop over height of the output
-            for x in range(output_w):  # Loop over width of the output
-                # Extract the region from the image
-                region = images[i, y:y + kh, x:x + kw]  # Current region
-                convolved_value = np.sum(region * kernel)  # Convolution operation
-                convolved_images[i, y, x] = convolved_value
-
-                # Debugging output
-                if i == 0:  # Only print for the first image
-                    print(f"Image: {i}, Position: ({y}, {x}), Region: {region}, "
-                          f"Kernel: {kernel}, Convolved Value: {convolved_value}")
-
-    return convolved_images
+    return convoluted
