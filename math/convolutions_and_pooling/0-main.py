@@ -1,20 +1,36 @@
 #!/usr/bin/env python3
-
-import matplotlib.pyplot as plt
 import numpy as np
-convolve_grayscale_valid = __import__('0-convolve_grayscale_valid').convolve_grayscale_valid
 
+"""
+Module for performing valid convolution on grayscale images.
+"""
 
-if __name__ == '__main__':
+def convolve_grayscale_valid(images, kernel):
+    """Perform valid convolution on grayscale images.
 
-    dataset = np.load('../../supervised_learning/data/animals_1.npz')
-    images = dataset['X_train']
-    print(images.shape)
-    kernel = np.array([[1 ,0, -1], [1, 0, -1], [1, 0, -1]])
-    images_conv = convolve_grayscale_valid(images, kernel)
-    print(images_conv.shape)
+    Args:
+        images (np.ndarray): Input images of shape (m, h, w).
+        kernel (np.ndarray): Convolution kernel of shape (kh, kw).
 
-    plt.imshow(images[0], cmap='gray')
-    plt.show()
-    plt.imshow(images_conv[0], cmap='gray')
-    plt.show()
+    Returns:
+        np.ndarray: Convolved images.
+    """
+    m, h, w = images.shape  # Get the shape of the input images
+    kh, kw = kernel.shape    # Get the shape of the kernel
+
+    # Calculate the dimensions of the output images
+    output_h = h - kh + 1
+    output_w = w - kw + 1
+
+    # Initialize the output array
+    convolved_images = np.zeros((m, output_h, output_w))
+
+    # Perform the convolution
+    for i in range(m):  # Loop over each image
+        for y in range(output_h):  # Loop over height of the output
+            for x in range(output_w):  # Loop over width of the output
+                # Apply the kernel to the current region of the image
+                region = images[i, y:y + kh, x:x + kw]  # Extract the region
+                convolved_images[i, y, x] = np.sum(region * kernel)
+
+    return convolved_images
