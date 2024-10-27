@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Module for performing same convolution on grayscale images.
+Defines a function that performs same convolution on grayscale images.
 """
 
 import numpy as np
 
 def convolve_grayscale_same(images, kernel):
     """
-    Performs a same convolution on grayscale images with padding.
+    Performs a same convolution on grayscale images with padding if needed.
 
     Parameters:
         images (numpy.ndarray): Input images with shape (m, h, w)
@@ -25,11 +25,11 @@ def convolve_grayscale_same(images, kernel):
     kh, kw = kernel.shape
 
     # Calculate padding for height and width
-    pad_h = (kh - 1) // 2
-    pad_w = (kw - 1) // 2
+    ph = (kh - 1) // 2 if kh % 2 == 1 else kh // 2
+    pw = (kw - 1) // 2 if kw % 2 == 1 else kw // 2
 
     # Pad images with zero padding on all sides
-    padded_images = np.pad(images, ((0, 0), (pad_h, pad_h), (pad_w, pad_w)), mode='constant', constant_values=0)
+    padded_images = np.pad(images, ((0, 0), (ph, ph), (pw, pw)), 'constant', constant_values=0)
 
     # Initialize the output array with the same dimensions as input images
     convoluted = np.zeros((m, height, width))
