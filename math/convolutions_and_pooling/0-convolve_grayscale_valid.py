@@ -5,6 +5,7 @@ Module for performing valid convolution on grayscale images.
 
 import numpy as np
 
+
 def convolve_grayscale_valid(images, kernel):
     """
     Performs a valid convolution on grayscale images.
@@ -33,8 +34,10 @@ def convolve_grayscale_valid(images, kernel):
     # Perform the convolution using two for loops
     for h in range(height - kh + 1):
         for w in range(width - kw + 1):
-            # Perform element-wise multiplication and summation over the current slice
-            output = np.sum(images[:, h: h + kh, w: w + kw] * kernel, axis=(1, 2))
+            # Perform element-wise multiplication and summation over the
+            # current slice
+            output = np.sum(images[:, h: h + kh, w: w + kw]
+                            * kernel, axis=(1, 2))
             convoluted[:, h, w] = output
 
     return convoluted
