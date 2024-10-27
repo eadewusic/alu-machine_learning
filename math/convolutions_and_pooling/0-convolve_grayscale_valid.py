@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 import numpy as np
 
+"""
+Module for performing valid convolution on grayscale images.
+"""
 
 def convolve_grayscale_valid(images, kernel):
     """Perform valid convolution on grayscale images.
@@ -26,9 +29,14 @@ def convolve_grayscale_valid(images, kernel):
     for i in range(m):  # Loop over each image
         for y in range(output_h):  # Loop over height of the output
             for x in range(output_w):  # Loop over width of the output
-                # Apply the kernel to the current region of the image
-                convolved_images[i, y, x] = np.sum(
-                    images[i, y:y + kh, x:x + kw] * kernel
-                )
+                # Extract the region from the image
+                region = images[i, y:y + kh, x:x + kw]  # Current region
+                convolved_value = np.sum(region * kernel)  # Convolution operation
+                convolved_images[i, y, x] = convolved_value
+
+                # Debugging output
+                if i == 0:  # Only print for the first image
+                    print(f"Image: {i}, Position: ({y}, {x}), Region: {region}, "
+                          f"Kernel: {kernel}, Convolved Value: {convolved_value}")
 
     return convolved_images
