@@ -1,44 +1,68 @@
 #!/usr/bin/env python3
 """
-Defines the NeuralNetwork class for binary classification with one hidden layer.
+defines NeuralNetwork class that defines
+a neural network with one hidden layer
+performing binary classification
 """
+
 
 import numpy as np
 
 
 class NeuralNetwork:
     """
-    Represents a neural network with one hidden layer performing binary classification.
+    class that represents a neural network with one hidden layer
+    performing binary classification
+
+    class constructor:
+        def __init__(self, nx, nodes)
+
+    public instance attributes:
+        W1: the weights vector for the hidden layer
+        b1: the bias for the hidden layer
+        A1: the activated output for the hidden layer
+        W2: the weights vector for the output neuron
+        b2: the bias for the output neuron
+        A2: the activated output for the output neuron
     """
 
     def __init__(self, nx, nodes):
         """
-        Initialize the neural network.
+        class constructor
 
-        Args:
-            nx (int): Number of input features.
-            nodes (int): Number of nodes in the hidden layer.
+        parameters:
+            nx [int]: the number of input features
+                If nx is not an integer, raise a TypeError.
+                If nx is less than 1, raise a ValueError.
+            nodes [int]: the number of nodes found in the hidden layer
+                If nodes is not an integer, raise TypeError.
+                If nodes is less than 1, raise a ValueError.
 
-        Raises:
-            TypeError: If nx or nodes are not integers.
-            ValueError: If nx or nodes are less than 1.
+        sets public instance attributes:
+            W1: the weights vector for the hidden layer,
+                initialized using a random normal distribution
+            b1: the bias for the hidden layer,
+                initialized with 0s
+            A1: the activated output for the hidden layer,
+                initialized to 0
+            W2: the weights vector for the output neuron,
+                initialized using a random normal distribution
+            b2: the bias for the output neuron,
+                initialized to 0
+            A2: the activated output for the output neuron,
+                initialized to 0
         """
-        if not isinstance(nx, int):
+        if type(nx) is not int:
             raise TypeError("nx must be an integer")
         if nx < 1:
             raise ValueError("nx must be a positive integer")
-
-        if not isinstance(nodes, int):
+        if type(nodes) is not int:
             raise TypeError("nodes must be an integer")
         if nodes < 1:
             raise ValueError("nodes must be a positive integer")
-
-        # Initialize weights and biases for the hidden layer
-        self.W1 = np.random.randn(nodes, nx)  # Random weights for hidden layer
-        self.b1 = np.zeros((nodes, 1))        # Zero bias for hidden layer
-        self.A1 = 0                           # Placeholder for hidden layer activations
-
-        # Initialize weights and biases for the output layer
-        self.W2 = np.random.randn(1, nodes)  # Random weights for output layer
-        self.b2 = 0                          # Zero bias for output layer
-        self.A2 = 0                          # Placeholder for output layer activations
+        self.W1 = np.random.randn(nodes, nx)
+        self.b1 = np.zeros((nodes, 1))
+        self.A1 = 0
+        self.W2 = np.random.randn(1, nodes)
+        self.b2 = 0
+        self.A2 = 0
