@@ -26,7 +26,7 @@ class DeepNeuralNetwork:
 
         for i, nodes in enumerate(layers):
             w_key = "W{}".format(i + 1)
-            b_key = f"b{i + 1}"
+            b_key = "b{}".format(i + 1)
             self.__weights[b_key] = np.zeros((nodes, 1))
             if i == 0:
                 self.__weights[w_key] = np.random.randn(nodes, nx) * np.sqrt(2 / nx)
@@ -56,7 +56,7 @@ class DeepNeuralNetwork:
         self.__cache["A0"] = X
         for i in range(self.__L):
             w_key = "W{}".format(i + 1)
-            b_key = f"b{i + 1}"
+            b_key = "b{}".format(i + 1)
             a_prev = self.__cache[f"A{i}"]
             z = np.matmul(self.__weights[w_key], a_prev) + self.__weights[b_key]
             self.__cache[f"A{i + 1}"] = self.sigmoid(z) if i < self.__L - 1 else self.softmax(z)
