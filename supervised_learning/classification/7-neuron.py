@@ -73,7 +73,8 @@ class Neuron:
             float: The cost of the model
         """
         m = Y.shape[1]
-        cost = -(1 / m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
+        cost = -(1 / m) * np.sum(Y * np.log(A) +
+                                 (1 - Y) * np.log(1.0000001 - A))
         return cost
 
     def evaluate(self, X, Y):
@@ -110,7 +111,15 @@ class Neuron:
         self.__W -= alpha * dW
         self.__b -= alpha * db
 
-    def train(self, X, Y, iterations=5000, alpha=0.05, verbose=True, graph=True, step=100):
+    def train(
+            self,
+            X,
+            Y,
+            iterations=5000,
+            alpha=0.05,
+            verbose=True,
+            graph=True,
+            step=100):
         """
         Trains the neuron using gradient descent.
 
