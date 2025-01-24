@@ -34,12 +34,12 @@ class NeuralNetwork:
         if nodes < 1:
             raise ValueError("nodes must be a positive integer")
 
-        # Hidden layer weights and bias
-        self.W1 = np.random.randn(nodes, nx)  # Weight matrix for hidden layer
-        self.b1 = np.zeros((nodes, 1))        # Bias vector for hidden layer
-        self.A1 = 0                      # Activated output of hidden layer
+        # Initialize hidden layer parameters
+        self.W1 = np.random.randn(nodes, nx)  # Weights for hidden layer
+        self.b1 = np.zeros((nodes, 1))        # Bias for hidden layer
+        self.A1 = 0                # Activated output of hidden layer
 
-        # Output layer weights and bias
-        self.W2 = np.random.randn(1, nodes)  # Weight matrix for output layer
-        self.b2 = 0                          # Bias scalar for output layer
+        # Initialize output layer parameters
+        self.W2 = np.random.randn(1, nodes)  # Weights for output layer
+        self.b2 = 0                          # Bias for output layer
         self.A2 = 0                          # Activated output of output layer
