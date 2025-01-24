@@ -1,5 +1,6 @@
 import numpy as np
 
+
 class Neuron:
     """
     Defines a single neuron performing binary classification.
@@ -20,6 +21,7 @@ class Neuron:
         if nx < 1:
             raise ValueError("nx must be a positive integer")
 
-        self.W = np.random.randn(1, nx)  # Weights vector initialized with random normal distribution
+        # Weights vector initialized with random normal distribution
+        self.W = np.random.randn(1, nx)
         self.b = 0  # Bias initialized to 0
         self.A = 0  # Activated output initialized to 0
