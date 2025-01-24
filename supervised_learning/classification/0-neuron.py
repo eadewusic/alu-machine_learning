@@ -1,22 +1,29 @@
 #!/usr/bin/env python3
+"""
+This module defines the Neuron class, which represents a single neuron
+performing binary classification. The class is initialized with a number of
+input features and defines public instance attributes for the weights, bias,
+and activated output of the neuron
+"""
+
 import numpy as np
 
 
 class Neuron:
     """
-    Defines a single neuron performing binary classification.
+    Defines a single neuron performing binary classification
     """
 
     def __init__(self, nx):
         """
-        Class constructor.
+        Class constructor
 
         Parameters:
-        nx (int): Number of input features to the neuron.
+        nx (int): Number of input features to the neuron
 
         Raises:
-        TypeError: If nx is not an integer.
-        ValueError: If nx is less than 1.
+        TypeError: If nx is not an integer
+        ValueError: If nx is less than 1
         """
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")
