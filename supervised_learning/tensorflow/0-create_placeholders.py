@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-import tensorflow.compat.v1 as tf
-tf.disable_v2_behavior()  # Disable TensorFlow 2.x behavior
+import tensorflow as tf
 
 def create_placeholders(nx, classes):
     """Creates placeholders for input data and labels"""
