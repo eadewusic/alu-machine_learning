@@ -1,4 +1,16 @@
 #!/usr/bin/env python3
+"""
+This module defines a function to create a layer in a neural network
+
+The function creates a new layer by initializing weights using He
+initialization (variance scaling), adding biases, and applying the
+specified activation function. The layer is named "layer" for distinction
+
+Functions:
+    create_layer(prev, n, activation): Creates a new layer with the
+    specified number of nodes and activation function
+"""
+
 import tensorflow as tf
 
 
