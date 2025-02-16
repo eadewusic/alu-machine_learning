@@ -6,7 +6,8 @@ and one-hot encoded labels in a neural network.
 The placeholders are used for feeding data into the model during training.
 
 Functions:
-    create_placeholders(nx, classes): Creates placeholders for input data and labels.
+    create_placeholders(nx, classes): Creates
+    placeholders for input data and labels.
 """
 
 import tensorflow as tf
