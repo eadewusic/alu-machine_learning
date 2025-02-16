@@ -40,5 +40,5 @@ def forward_prop(x, layer_sizes=[], activations=[]):
     for i in range(len(layer_sizes)):
         prev = create_layer(prev, layer_sizes[i], activations[i])
 
-    # Return the output of the final layer
-    return prev
+    # Add softmax activation to the final layer if it's for classification
+    return tf.nn.softmax(prev)
