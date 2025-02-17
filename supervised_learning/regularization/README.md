@@ -73,3 +73,14 @@ You can install the dependencies using the following command:
 ```bash
 pip install numpy==1.15 tensorflow==1.15
 ```
+
+## Blog Post
+I wrote a blog post explaining explaining the mechanics, pros, and cons of the following regularization techniques:
+
+- L1 regularization
+- L2 regularization
+- Dropout
+- Data Augmentation
+- Early Stopping
+
+Kindly peruse the blog post on **"How to Prevent Overfitting in Machine Learning"** [here](https://medium.com/@euniceadewusic/how-to-prevent-overfitting-in-machine-learning-8f8cbe4b4b25)
