@@ -22,4 +22,16 @@ By completing this project, you will:
 - Each module, class, and function includes appropriate **docstrings**.
 - Only `numpy` and `tensorflow` are used; **no external libraries like Keras**.
 
+## Blog Post
+I wrote a blog post explaining the mechanics, pros, and cons of the following optimization techniques:
 
+- Feature Scaling
+- Batch normalization
+- Mini-batch gradient descent
+- Gradient descent with momentum
+- RMSProp optimization
+- Adam optimization
+- Learning rate decay
+- and more
+
+Kindly peruse the blog post on **"Deep Learning 101: Optimisation in Machine Learning"** [here](https://medium.com/@euniceadewusic/deep-learning-101-optimisation-in-machine-learning-fcee8dea7d67)
