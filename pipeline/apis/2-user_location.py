@@ -53,7 +53,9 @@ if __name__ == '__main__':
 
         # Other cases
         else:
-            print(f"Error: Received unexpected status code {response.status_code}")
+            print(
+                f"Error: Received unexpected status code {
+                    response.status_code}")
 
     except requests.exceptions.RequestException as e:
         print(f"Request failed: {e}")
