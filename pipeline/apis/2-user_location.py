@@ -51,7 +51,7 @@ if __name__ == '__main__':
             else:
                 print("No location found")
 
-        # Other cases (optional)
+        # Other cases
         else:
             print(f"Error: Received unexpected status code {response.status_code}")
 
