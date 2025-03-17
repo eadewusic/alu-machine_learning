@@ -24,17 +24,17 @@ def sentientPlanets():
 
         data = response.json()
         for species in data.get('results', []):
-            designation = species.get('designation', '').lower()
-
-            if designation in ['sentient', 'semi-sentient']:
+            # If species has a language and homeworld, consider them sentient
+            if species.get('language'):
                 homeworld_url = species.get('homeworld')
 
                 if homeworld_url:
                     hw_response = requests.get(homeworld_url)
                     if hw_response.status_code == 200:
                         homeworld_data = hw_response.json()
-                        if homeworld_data.get('name') not in planets:
-                            planets.append(homeworld_data.get('name'))
+                        planet_name = homeworld_data.get('name')
+                        if planet_name not in planets:
+                            planets.append(planet_name)
                 else:
                     if 'unknown' not in planets:
                         planets.append('unknown')
