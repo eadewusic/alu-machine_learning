@@ -9,7 +9,7 @@ while species_url:
         name = species.get('name')
         designation = species.get('designation')
         homeworld = species.get('homeworld')
-        
+
         if "rodian" in name.lower():
             print(f"Name: {name}")
             print(f"Designation: {designation}")

@@ -1,54 +1,59 @@
 #!/usr/bin/env python3
 """
-Fetches and prints the location of a GitHub user
-Handles rate limits and non-existing users
+Script that prints the location of a GitHub user
+passed as the first argument
 """
 
-import requests
 import sys
-import time
+import requests
 from datetime import datetime
 
-
-def get_user_location(url):
-    """
-    Fetches the location of the user from the GitHub API URL provided
-
-    Args:
-        url (str): The GitHub API URL for the user
-
-    Returns:
-        str: The location of the user, or appropriate message if
-             the user is not found or if rate limits are exceeded
-    """
-    response = requests.get(url)
-
-    # Check if user was found
-    if response.status_code == 404:
-        return "Not found"
-
-    # Check for rate limit
-    if response.status_code == 403:
-        reset_timestamp = int(response.headers.get('X-RateLimit-Reset'))
-        current_time = int(time.time())
-        reset_in_seconds = reset_timestamp - current_time
-        reset_in_minutes = reset_in_seconds // 60  # Convert seconds to minutes
-        return f"Reset in {reset_in_minutes} min"
-
-    # Check if the user exists and extract location
-    if response.status_code == 200:
-        user_data = response.json()
-        print(user_data)  # Debugging: Print the response JSON to check its structure
-        location = user_data.get('location', 'No location available')
-        return location
-
-    return "Error: Unable to fetch data"
-
-
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print("Please provide the GitHub user API URL")
-    else:
-        url = sys.argv[1]
-        location = get_user_location(url)
-        print(location)
+    if len(sys.argv) != 2:
+        print("Usage: ./2-user_location.py <GitHub API URL>")
+        sys.exit(1)
+
+    url = sys.argv[1]
+
+    try:
+        response = requests.get(url)
+
+        # Handle 403 (Rate limit exceeded)
+        if response.status_code == 403:
+            # Get the reset timestamp from headers
+            reset_timestamp = response.headers.get('X-RateLimit-Reset')
+
+            if reset_timestamp:
+                # Convert timestamp to int
+                reset_timestamp = int(reset_timestamp)
+
+                # Get current time
+                now_timestamp = int(datetime.now().timestamp())
+
+                # Calculate the minutes remaining until reset
+                minutes_remaining = (reset_timestamp - now_timestamp) // 60
+
+                print(f"Reset in {minutes_remaining} min")
+            else:
+                print("Rate limit exceeded. No reset info found")
+
+        # Handle 404 (User not found)
+        elif response.status_code == 404:
+            print("Not found")
+
+        # Handle 200 (Success)
+        elif response.status_code == 200:
+            user_data = response.json()
+            location = user_data.get('location')
+
+            if location:
+                print(location)
+            else:
+                print("No location found")
+
+        # Other cases (optional)
+        else:
+            print(f"Error: Received unexpected status code {response.status_code}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"Request failed: {e}")
