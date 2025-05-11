@@ -2,8 +2,6 @@
 """Neural Style Transfer"""
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.applications.vgg19 import VGG19, preprocess_input
-from tensorflow.keras.models import Model
 
 
 class NST:
@@ -57,12 +55,12 @@ class NST:
         return image
 
     def load_model(self):
-        """Loads VGG19 model for style/content cost computation"""
-        vgg = VGG19(include_top=False, weights='imagenet')
+        """Loads VGG19 model with only TensorFlow (no keras.applications)"""
+        vgg = tf.keras.applications.VGG19(include_top=False, weights='imagenet')
         vgg.trainable = False
 
         outputs = [vgg.get_layer(name).output for name in self.style_layers + [self.content_layer]]
-        model = Model(inputs=vgg.input, outputs=outputs)
+        model = tf.keras.Model(inputs=vgg.input, outputs=outputs)
         model.trainable = False
 
         return model
